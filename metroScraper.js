@@ -11,7 +11,11 @@ const checkMetroStatus = async (line) => {
 
   try {
     console.log('[LOG]: Fetching status...');
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      // For GitHub Actions, we need to disable the sandbox
+      // In local environment, the default options should work fine
+    });
     const page = await browser.newPage();
     await page.goto(METRO_URL);
 
