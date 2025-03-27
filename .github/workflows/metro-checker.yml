@@ -1,0 +1,29 @@
+name: Metro Status Checker
+
+on:
+  schedule:
+    - cron: '0 */3 * * *' # Runs every 3 hours
+  workflow_dispatch: # Allows manual execution
+
+jobs:
+  check_metro:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Metro Scraper
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
+        run: node metroScraper.js
