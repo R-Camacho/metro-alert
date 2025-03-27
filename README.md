@@ -78,22 +78,6 @@ checkMetroStatus('Amarela');
 checkMetroStatus('Vermelha');
 ```
 
-### Command Line Arguments
-
-You can also modify the script to accept command line arguments:
-
-```javascript
-// Add to metroScraper.js
-const line = process.argv[2] || 'Verde';
-checkMetroStatus(line);
-```
-
-Then run:
-
-```
-node metroScraper.js Azul
-```
-
 ### GitHub Actions Integration
 
 This project includes a GitHub Actions workflow that runs every 3 hours to check the metro status automatically.
