@@ -69,4 +69,6 @@ const sendEmailNotification = (status, line) => {
   });
 };
 
+console.log(`[LOG]: Metro check ran at ${new Date().toLocaleString()}`);
+
 checkMetroStatus('Verde');
