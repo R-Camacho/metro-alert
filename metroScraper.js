@@ -32,7 +32,10 @@ const checkMetroStatus = async (line) => {
       return;
     }
 
-    if (lineStatus.toLowerCase().includes('normal')) {
+    if (
+      lineStatus.toLowerCase().includes('normal') ||
+      lineStatus.toLowerCase().includes('encerrada')
+    ) {
       console.log(`[INFO]: A Linha ${line} está normal.`);
     } else {
       console.log(`[ALERT]: A ${line} está com perturbações!`);
